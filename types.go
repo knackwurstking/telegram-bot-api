@@ -261,6 +261,10 @@ type Chat struct {
 	//
 	// optional
 	LastName string `json:"last_name,omitempty"`
+	// IsForum is true if chat is a forum (has topics enabled)
+	//
+	// optional
+	IsForum bool `json:"is_forum,omitempty"`
 	// Photo is a chat photo
 	Photo *ChatPhoto `json:"photo"`
 	// Bio is the bio of the other party in a private chat. Returned only in
@@ -361,6 +365,12 @@ func (c Chat) ChatConfig() ChatConfig {
 type Message struct {
 	// MessageID is a unique message identifier inside this chat
 	MessageID int `json:"message_id"`
+
+	// MessageThreadID is an identifier for a message thread. for supergroups only
+	//
+	// optional
+	MessageThreadID int `json:"message_thread_id,omitempty"`
+
 	// From is a sender, empty for messages sent to channels;
 	//
 	// optional
